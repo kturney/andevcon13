@@ -1,0 +1,57 @@
+Speakers: Frank Qixing Du, Mark Peng
+
+Performance Concernes
+	Stock ListView
+		inefficient in GB
+		optimizes for few view types
+		optimizes for same row heights
+
+Get long GC Pauses
+	adb dalvikvm:* *:E
+	watch out for GC_FOR_ALLOC
+
+Memoery Tricks
+	remove unnecessary alloc
+		cached values
+		autoboxing/unboxing
+	reduce allocation
+		object pooling
+		shared resources
+		bounded data set
+			like windowed cursors
+	memory leakage
+		activity context vs app context
+		allow Android sys to realease resources
+		limit activity of heavy resource consumers
+
+Bitmap
+	mem cache
+		based on vm heap size and screen size
+	disk cache
+	BitmapFactory.Options
+		Subsample:inSampleSize
+		Purgeable:inPurgeable, inInputShareable
+			set both to true
+			sys can claim when mem is low
+
+ListView Bonus Trick
+	reduce GC_FOR_ALLOC in GB or earlier*
+	turn off scroll cache
+
+Take over Android ListView recycling
+	Modular view recycling
+		recycle small parts lof large views
+		use a "view pool" so that multiple components throughout the app can share infalted views
+		can also pre-inflate views that you think the user may need when there is idle time
+
+Off Main Thread
+	precompute
+		spannable
+		feed story prunnable
+
+On main thread
+	defer heavy ops to non-critical times
+	monitor main thread idling
+		post tiny tasks to main thread
+		defered handler in stock launcher
+

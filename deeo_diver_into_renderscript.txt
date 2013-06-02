@@ -1,0 +1,84 @@
+Speaker: Larry Schiefer, CTO HiQES LLC @ljschiefer
+
+What is Renderscript
+	High perf computing
+	based on c99
+	fully parallelized
+	near-native
+	can utilize DSP
+
+What RS is NOT
+	general purpose progrraming
+	ndk/jni replacement
+	framework replacement
+
+Typicla USe Cases
+	Image manipulation
+	3D graphics computations
+
+Anatomy of RS
+	Dalvik integration w RS
+		vm in control, owns memory
+	master/slave relationship
+	Java code calls RS via reflected layer
+	Writing a script
+		special pragmas
+		optional init function
+			effectively a constructor
+			called 1x before RS runs
+			no args, no return
+		root functions
+			does real work
+			also known as the "kernel"
+			main entry point
+			processes data items
+		constants/variables
+			only available within the script
+			variables get automatic accessor methods
+			structs and pointers are special
+				structs cannot nest pointers, arrays
+		helper functions
+			internal to script and Java class
+			automatic Java accessor method created
+			no return value, runs async
+		call other scripts
+			only compute kernel, no functions
+			all RS instances managed in Java
+				so must create Java object for both and the bind one script to the other
+			useful for built-in intrinsics
+			ScriptGroups (api 17) allow chaining scripts automatically
+
+Calling RS from Java
+	create RS context
+	create ScriptC instance for your RS
+	setup data (allocations)
+	invoke the script
+	get output data
+	not sure if invoke or get output is the one that blocks
+	by the way, RS blocks, so should be called from bg thread
+
+Debugging
+	very limited
+	rsDebug
+		write data to the log with args
+	no source lvl debugging
+	have to get creative
+		send messages to your Java code
+		be careful not to lockup CPU/GPU/DSP
+
+Built-in Features
+	standard math
+		trig
+		log
+		vector
+		matrix
+	basic drawing
+	intrinsic scripts
+		managed like other scripts via Java
+		graphics heavy
+	OpenGL integration [Deprecated in API 16]
+
+FilterScript
+	intended for image processing
+	use .fs rather than .rs
+	more restrictive

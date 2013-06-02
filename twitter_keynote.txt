@@ -1,0 +1,15 @@
+Speaker: Jeff Seibert, founder of Crashalytics, Director of Engineering @Twitter
+
+Crashalytics looks pretty cool
+
+can utilize a more agile dev process with automated testing
+	unit tests - roboelectric
+	integration tests - UiAutomator, Spoon
+	do dogfooding
+
+SSL Pinning
+github.com/moxie0 ... or something like that
+
+Stability > performance
+test and verify
+don't optimize early

@@ -1,0 +1,10 @@
+
+
+AndroVm
+	ICS emulator that runs on top of virtual box
+	bonus tip: proxy network traffic and packet sniff it, great for testing API communication
+
+Travis - Jenkins alternative
+	ci tool
+	can start a vm for you
+

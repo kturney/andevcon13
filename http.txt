@@ -1,0 +1,134 @@
+Speaker: Jesse Wilson
+http:tinyurl.com/androidhttp
+
+HTTP in 2013
+	Proxies
+		HTTP proxies exist, annoy
+		you speak to the proxy, it speaks http to the world
+		http and https
+	Caching
+		fundamental
+		http distinguishes between resources (GET) and actions (POST)
+		3 ways caching happens
+			don't have it, have to fetch it
+			have it, may be stale
+				conditional caching: give me a resource if it has changed since I last got it
+			have it
+		Caching for servers
+			use the cache-control & ETag headers
+				USE "max-age"!!
+				ETags specify a version, eg v3
+					simplier to debug than modification dates
+			using modicfication dates is clumsy! The user agent is dumb and uses heuristics
+			serving static resources like images? Use a permanent URL and let it cache forever!
+			when the resource is updates, just change the URL!
+			CDNs
+				occasionally you're bottlenecked by the speed of light
+			Thumbor
+				dynamic URLs for images that resizes the image to a specified size
+	GZIP
+		do it! (for text)
+		don't double compress already compressed content
+		easier and smaller than just switching to protobuffers
+	DNS
+		redundant datacenters?
+		supporting IPv6 and IPv4?
+		each host may have multiple IP addresses!
+	WiFi Hotspots
+		your HTTP requests may be redirected
+		not such a problem when using HTTPS
+	HTTPS
+		TLS (transport layer security), the successor to SSL
+		reduces eavesdropping while using public WiFi
+	Certificate Authorities
+		lots of problems
+		governments want to spy
+		browser vendors have 2 bad options
+			include a CA
+			don't include a CA
+		one of the biggest flaws in the internet
+		if you want to be really safe
+			hardcode your cert in your app
+	Hostname Verification
+		The Most Dangerous Code in the World: Validating SSL Certificates in Non-Browser Software
+	Cookies
+		4 different specs
+		awkward on Android: no out-of-the box way to persist across app launches
+	Ranges
+		restarting a failed download sucks
+		great for apps that use large downloads
+			need to do this manually
+	Sockets
+		spec says use at most 2 connections
+		ie 8, chrome & firefox: 6
+		Hacks!
+			image spriting
+			falttening CSS
+			serving content from multiple host names
+			thes hacks hurt caching!
+		HTTP slow start hurts performance
+			1st request will be the slowest
+		SPDY
+			keep the good parts
+			fix sockets
+			compress more stuff
+			reasonable go-to-market strategy: Chrome + google.com + NPN
+			can have all requests happen on 1 connection
+			needs HTTPS & Android 4.1+
+			lets us pull multiple resources with only 1 established connection
+
+Android's HTTP Clients
+	Note: can check current URL to see if url is what you requested or is different and you were redirected to a WiFi hotspot
+	HttpURLConnection
+		~9000 lines of code
+		limited API, grown organically since 1996
+		Jesse does not recommend URL class for anything but opening connections
+		Problems:
+			buggy in Froyo, should disable connection pool
+	Apache HTTP Client
+		~50,000 lines of code
+		problems
+			where does the work happen?
+			enterprisey
+			configurability can also be a curse
+			hard to figure out where to make it fast
+	OkHttp
+		forked from Android 4.0's HttpURLConnection
+		New features
+			SPDY
+			fault recovery
+			~12,000 lines of code
+		Problems:
+			it's new. no deep archive of support
+			still use old API
+
+Tools
+	Charles
+		Web debugging proxy
+		can be setup to proxy encryted connections and record real, unencryted data
+	MockWebServer
+		unit testing web requests
+		Mocks
+			1. describe scenario
+			2. exercise your code
+			3. verify
+	Retrofit
+		REST client
+		generates implementations for provided Java interfaces that map to RESTful web services
+		10.0.2.2 is the master IP address in the Android emulator that allows you to escape the emulator and access host machine
+	Picasso
+		ImageDownloader
+		Pretty awesome
+	Volley
+		HTTP library from the guys who make the Play Store app
+		Sophisticated features
+			request canceling
+			request scheduler
+			pluggable
+
+Advice
+	HTTP has knobs
+		use them
+	cache
+	don't fly blind
+	use high-level libraries

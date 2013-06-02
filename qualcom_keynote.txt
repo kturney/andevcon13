@@ -1,0 +1,57 @@
+Break Away from the Pack: Killer Apps and New Market Opportunities for Android
+Speaker: Leon Farasati
+
+2017: expected 830 billion apps downloaded
+According to Vision Mobile, 2/3 developers fall below the app 'poverty line'
+	< $500 / app / month
+4 in 5 apps never breach the 10,000 downloads mark
+
+Idea 1
+	differentiate by creating HW optimized apps
+Overcoming I/O limitations
+Access is key
+More performance, less power consumption
+Offload to the DSP
+	Gestures
+	Image Processing
+	Object Recognition
+	Voice Quality
+	Augmented Reality
+	HD audio
+
+Computer vision-based augmented reality experiences
+	Vuforia
+
+AllJoin
+	ptp networking/sharing
+	seems similar to magnet/0mq
+
+Tools and Resources for Devs
+	Hardware/sys level tools
+		introing MDP's w/ the Snapdragon 800
+		bsquare - some partner?
+		Context awareness: Gimbal
+		FastCV - we could use this
+		GPU profilers
+		Snapdragon SDK for Android
+		Trepn profiler
+			cpu/network/mem/power usage
+			can link app with Trepn to tell what your app is affecting
+
+New Market Opportunities
+
+Idea 2: Use Android skills to create applications for the Embedded Computing market
+	intenet of everything
+	digital 6th sense
+	touchscreens everywhere
+	$39 billion market for automotive infotainment systems
+
+Overcoming I/O limitations
+Mobile processors into embedded computing
+Wearable computing
+	expected 70 million shipments by 2018
+
+Developer support
+	DragonBoard: Sys on a Module
+		will have Snapdragon 800 version soon
+	Qualcomm Developer Network (developer.qualcomm.com)

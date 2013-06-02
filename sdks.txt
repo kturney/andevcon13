@@ -1,0 +1,32 @@
+Speaker: Marc Richards
+Advanced Techniques for developing powerful, yet lightweight SDKs for Android
+
+add value; don't take it away
+	stablity
+		catch all (unchecked exceptions)
+		provide a debug mode
+		release frequency
+	testability
+		wait for the emulator
+	permissions
+		minimize #
+		runtime detection with feature swiches
+		feature detection
+
+API Design
+	generic hooks
+	callbcks
+	javadocs
+	deprecation
+	binary footprint
+		Actor.java - gist
+	reporting
+
+CPU usage
+	log only in Debug
+
+Battery usage
+	bundle network requests
+	radio activity
+		android training - efficient downloads
+		

@@ -1,0 +1,32 @@
+Speaker: Jake Wharton
+
+Otto
+	apps are stateful
+	apps change state
+	Old solution: manager and listener model
+	New solution: subscription model
+	Initial state support
+		use @Produce
+
+Tape
+	persistent, file-based queue
+	atomic, transactional commits
+	make sure a task happens
+
+Retrofit
+	type-safe abstraction of REST API interaction
+
+Dagger
+	dependency injection
+	JSR 330-compliant
+	inversion of control
+	annotation processing code generation
+	can validate the dependency graph at compile time
+	can throw error if you're providing unused things
+
+OkHttp
+	pretty sweet
+
+Picasso
+	also really sweet
+

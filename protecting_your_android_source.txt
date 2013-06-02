@@ -1,0 +1,35 @@
+Speaker: Godfrey Nolan
+
+Tool of choice for .class decompelation
+	jdgui --> Java Decompiler
+
+decompilingandroid.com
+
+hosedextojar
+
+add proguard to project.properties
+
+protecting
+	obfuscation
+	can put key in c++ --> but not full-proof, can still be decompiled
+	SQLCipher for SQLite
+	Google Closure for JavaScript in HTML5/CSS
+	Don't use keys - login each time
+	break tools
+		dex2jar and baksmali
+	Google Encryption in Jelly Bean (RIP)
+	Hide key info elsewhere (see presentation resources)
+
+anti-reverse engineering tools
+	proguard
+		app size
+		performance
+	dasho
+	dexguard
+	ndk
+	closure
+	hosedex2jar
+	spe (security policy enforcer) - secure code scanner
+
+pcisecuritystandards
+selinuxproject.org/page/SEAndroid
